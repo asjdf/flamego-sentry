@@ -4,7 +4,7 @@ on:
     paths:
       - '**.go'
       - 'go.mod'
-      - '.github/workflows/lsif.yml'
+      - '.github/workflows/LSIF.yaml'
 
 jobs:
   lsif-go:
