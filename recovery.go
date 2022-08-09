@@ -8,6 +8,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -89,7 +90,7 @@ func isBrokenPipeError(err interface{}) bool {
 
 // GetHubFromContext retrieves attached *sentry.Hub instance from flamego.Context.
 func GetHubFromContext(ctx flamego.Context) *sentry.Hub {
-	if ctx.Value(inject.InterfaceOf((*sentry.Hub)(nil))).IsValid() {
+	if ctx.Value(reflect.TypeOf((*sentry.Hub)(nil))).IsValid() {
 		return ctx.Value(inject.InterfaceOf((*sentry.Hub)(nil))).Interface().(*sentry.Hub)
 	}
 	return nil
